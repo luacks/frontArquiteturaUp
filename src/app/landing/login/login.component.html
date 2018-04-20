@@ -1,0 +1,27 @@
+<section>
+	<h3>Login</h3>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">	
+		<mat-form-field>
+    <input matInput placeholder="Usuario" formControlName="username">
+     <mat-error *ngIf="form.controls.username.hasError('required')">
+      Usuário é necessário
+    </mat-error>
+  	</mat-form-field>
+
+  	<mat-form-field>
+    <input matInput placeholder="Senha" formControlName="password">
+    <mat-error *ngIf="form.controls.password.hasError('required')">
+      Senha é necessário
+    </mat-error>
+  	</mat-form-field>
+  		<div align="right">
+  		
+  <button mat-raised-button color="primary">Entrar</button>
+
+  
+  		</div>
+
+  		<div style="color: red;" *ngIf="error"> {{ errorMessage }} </div>
+  		  </form>
+  		
+</section>

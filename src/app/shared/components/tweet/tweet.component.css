@@ -1,0 +1,17 @@
+div { background-color: white; width: 900px; padding: 10px; box-sizing: border-box; margin: 10px auto;  
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	font-family: 'Roboto'; overflow: hidden;  }
+
+
+img { width: 100px; height: 50px; border-radius: 100px 100px 100px; }
+
+ b { color: #777; }
+ .status {
+	 display: inline-block;
+ }
+
+
+
+ @media only screen and (max-width: 1024px) {
+	div { width: 100%; margin: 10px auto; z-index: -1; background-color: #fff; }
+}

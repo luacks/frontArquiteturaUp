@@ -1,0 +1,19 @@
+<section>
+<form [formGroup]="form">	
+<mat-form-field>
+  <textarea matInput placeholder="Tweet" (keyup)="changeCount()" formControlName="tweet" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5"></textarea>
+</mat-form-field>	
+
+  
+ <b>	{{ size }} </b>
+ 
+  <div style="float: right;">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Tweetar</button>
+    
+  </div>
+  <br><br><br> 
+
+  
+  		</form>
+</section>

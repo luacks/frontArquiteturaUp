@@ -1,0 +1,39 @@
+<main>
+	<section>
+		<span>Redoo</span>
+
+
+	<nav>
+		<ul *ngIf="logged">
+			<li [routerLink]="['/register']">Registrar-se</li>
+			<li [routerLink]="['/']">Login</li>
+		</ul>
+
+		<ul *ngIf="!logged">
+			<li [matMenuTriggerFor]="appMenu">{{ user?.realname || 'Conta' }}</li>
+		</ul>
+		<mat-menu #appMenu="matMenu">
+	 		 
+	 		 <button mat-menu-item [routerLink]="['../profile/' + user?.id ]">
+
+   		 <mat-icon>account_circle</mat-icon>
+				Perfil</button>
+
+				<button mat-menu-item  [routerLink]="['../../home']">
+
+					<mat-icon>home</mat-icon>
+					Home</button>
+				
+
+	  		<button mat-menu-item [routerLink]="['settings']">
+
+    <mat-icon>settings</mat-icon>
+	  		Configurações</button>
+
+	  		<button mat-menu-item (click)="logout()">
+	  		<mat-icon>exit_to_app</mat-icon>
+	  		Sair</button>
+			</mat-menu>
+	</nav>
+		</section>
+</main>

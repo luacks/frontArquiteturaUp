@@ -1,0 +1,11 @@
+<div>
+    <mat-list>
+        <mat-list-item>
+          <img mat-list-icon src="http://www.kodefork.com/static/users/images/user.png" alt="">
+
+  <button #likeBtn (click)="like(post.likes)" matTooltip="{{ post.likes }} curtidas" mat-mini-fab><mat-icon aria-label="Clique apra curtir">favorite</mat-icon></button>
+          <h4 mat-line>{{ post.owner.realname }}</h4>
+          <p mat-line>{{ post.text }}
+        </mat-list-item>  
+      </mat-list>
+    </div>

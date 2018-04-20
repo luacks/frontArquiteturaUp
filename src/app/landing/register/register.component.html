@@ -1,0 +1,46 @@
+<section>
+	<h3>Registrar-se</h3>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!success">	
+
+		<mat-form-field>
+    <input matInput placeholder="Nome" formControlName="realname">
+    <mat-error *ngIf="form.controls.realname.hasError('required')">
+      Nome é necessário
+    </mat-error>
+  	</mat-form-field>
+
+
+	<mat-form-field>
+    <input matInput placeholder="Usuario" formControlName="username">
+    <mat-error *ngIf="form.controls.username.hasError('required')">
+      Nome de usuário é necessário
+    </mat-error>
+  	</mat-form-field>
+
+  	<mat-form-field>
+    <input matInput placeholder="Email" formControlName="email">
+     <mat-error *ngIf="form.controls.email.hasError('required')">
+      Email é necessário
+    </mat-error>
+    <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+      Digite um email valido
+    </mat-error>
+  	</mat-form-field>
+  	<mat-form-field>
+    <input matInput type="password" placeholder="Senha" formControlName="password">
+    <mat-error *ngIf="form.controls.password.hasError('required')">
+      Senha é necessário
+    </mat-error>
+  	</mat-form-field>
+  		<div align="right">
+  		
+  <button mat-raised-button color="primary">Registrar-se</button>
+
+  		</div>
+
+	</form>
+
+
+	<div *ngIf="success">Usuário cadastrado, <span [routerLink]="['/']">fazer login</span></div>
+	<div *ngIf="error">Erro no servidor, tente novamente mais tarde</div>
+</section>
