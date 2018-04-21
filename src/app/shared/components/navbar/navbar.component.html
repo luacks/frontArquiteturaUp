@@ -4,12 +4,12 @@
 
 
 	<nav>
-		<ul *ngIf="logged">
+		<ul *ngIf="!logged">
 			<li [routerLink]="['/register']">Registrar-se</li>
 			<li [routerLink]="['/']">Login</li>
 		</ul>
 
-		<ul *ngIf="!logged">
+		<ul *ngIf="logged">
 			<li [matMenuTriggerFor]="appMenu">{{ user?.realname || 'Conta' }}</li>
 		</ul>
 		<mat-menu #appMenu="matMenu">

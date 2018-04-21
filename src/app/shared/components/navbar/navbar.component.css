@@ -15,7 +15,7 @@ span { font-size: 1.3em; color: #55acee; }
 nav { float: right; }
 
 ul { list-style-type: none; list-style: none; line-height: 10%; }
-li { float: left; margin-right: 0px; font-size: 1em; font-weight: bold; color: rgba(0,0,0,0.54); cursor: pointer;}
+li { float: left; margin-left: 40px; font-size: 1em; font-weight: bold; color: rgba(0,0,0,0.54); cursor: pointer;}
 
  @media only screen and (max-width: 1024px) {
     main { width: 100vw; padding: 0; }

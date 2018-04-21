@@ -6,7 +6,7 @@ export class PostService {
 
   constructor(private http: Http) { }
 
-		extractData(res: any){
+	extractData(res: any){
     return res
   }
 
@@ -31,5 +31,13 @@ export class PostService {
       .then(this.extractData)
       .catch(this.extractData)
   }
+
+  feed(array){
+    return this.http.post(`http://localhost:8080/redooAlpha/rest/feed`, array)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.extractData)
+  }
+  
 
 }

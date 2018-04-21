@@ -2,8 +2,13 @@
 
 <header>
     <img src="http://www.kodefork.com/static/users/images/user.png" alt="">
-    <h3>Lucas Jandrey</h3>
-    300 Seguidores
+    <section *ngIf="loadState">
+        <h3>Lucas Jandrey</h3>
+        <b>{{ profile.followers?.length }} Seguidor<span *ngIf="profile.followers.length > 1 || profile.followers.length == 0">es</span></b>
+        <p>
+            <button mat-raised-button *ngIf="btnState.follow" color="primary" (click)="follow()">Seguir</button> <button mat-raised-button *ngIf="btnState.unfollow" color="warn" (click)="unfollow()">Deixar de seguir</button>
+        </p>
+    </section>
 </header>
 
-<tweet *ngFor="let tweet of tweets" [post]="tweet"></tweet>
+<tweet *ngFor="let tweet of profile.tweets" [post]="tweet"></tweet>

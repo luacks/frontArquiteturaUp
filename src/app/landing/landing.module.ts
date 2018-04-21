@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 
-import { UserService } from './services/user.service'
+import { UserService } from '../shared/services/user.service'
 import { HttpModule } from '@angular/http'
 const routes: ModuleWithProviders = RouterModule.forChild([
 	{

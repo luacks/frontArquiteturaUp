@@ -23,9 +23,17 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.router.url !== '/register' || this.router.url !== '/'){
-      this.logged = false;
-      this.user = JSON.parse(localStorage.getItem('user'))
+    switch(this.router.url){
+      case '/register':
+        this.logged = false
+      break;
+      case '/':
+        this.logged = false
+      break;
+      default:
+        this.logged = true;
+        this.user = JSON.parse(localStorage.getItem('user'))
+      break;
     }
   }
 
