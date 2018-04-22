@@ -1,7 +1,7 @@
 <main>
 	<section>
-		<span>Redoo</span>
-
+		<span *ngIf="!backState">Redoo</span>
+		<mat-icon *ngIf="backState" [routerLink]="['../../home']">arrow_back</mat-icon>
 
 	<nav>
 		<ul *ngIf="!logged">

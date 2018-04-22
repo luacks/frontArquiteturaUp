@@ -9,7 +9,7 @@
   	</mat-form-field>
 
   	<mat-form-field>
-    <input matInput placeholder="Senha" formControlName="password">
+    <input matInput type="password" placeholder="Senha" formControlName="password">
     <mat-error *ngIf="form.controls.password.hasError('required')">
       Senha é necessário
     </mat-error>

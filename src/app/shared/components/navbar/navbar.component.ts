@@ -11,10 +11,12 @@ export class NavbarComponent implements OnInit {
 	logged: boolean = true;
   user: any = null;
   profile: boolean = true;
+  backState: boolean = false;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router,
+              private activated: ActivatedRoute) { 
     if(this.router.url !== '/profile') this.profile = false
-  		console.log('hi')
+  	else this.backState = true;
   }
 
   logout(){

@@ -1,6 +1,14 @@
 <navbar></navbar>
 
-<post></post>
+<post (onTweet)="newTweet($event)"
+      ></post>
 
-<tweet *ngFor="let tweet of tweets" [post]="tweet"></tweet>
+<section>
+  <button mat-button (click)="load()">
+    <mat-icon>autorenew</mat-icon>
+  </button>
+</section>
+
+<tweet *ngFor="let tweet of tweets" [post]="tweet"
+      (onDeleted)="deleteTweet($event)"></tweet>
 

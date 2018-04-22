@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../../../shared/services/post.service'
 import { MatSnackBar } from '@angular/material';
@@ -10,9 +10,12 @@ import { MatSnackBar } from '@angular/material';
 })
 export class PostComponent implements OnInit {
 
+  @Output('onTweet') tweetEmitter: EventEmitter<any> = new EventEmitter<any>();
+
   size: number = 140;
   user: any;
   form: FormGroup;
+
 
   constructor(private fb: FormBuilder, private postService: PostService, private snackbar: MatSnackBar) {
   		this.user = JSON.parse(localStorage.getItem('user'))
@@ -30,8 +33,10 @@ export class PostComponent implements OnInit {
 
   onSubmit() {
   	if(this.form.valid){
+      let tweetData = {text : this.form.value.tweet, likes : 0, realname : this.user.realname, data : "10/10/10" }
+  		this.postService.save(tweetData, this.user.id).then(res => {
 
-  		this.postService.save({text : this.form.value.tweet, likes : 0, realname : this.user.realname, data : "10/10/10" }, this.user.id).then(res => {
+        this.tweetEmitter.emit(JSON.parse(res._body))
         this.size = 140;
         this.snackbar.open('Tweet enviado', 'OK', {
           duration: 3000
