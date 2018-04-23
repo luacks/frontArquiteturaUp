@@ -1,13 +1,15 @@
 ## FrontEnd Angular - Arquitetura UP
 Projeto de Arquitetura de Software - FrontEnd
 
-Ideia: Rede Social (base [Twitter](www.twitter.com))
+Ideia: Rede Social (base [Twitter](https://www.twitter.com))
 
-[RepositÛrio back-end](https://github.com/luacks/up-arquitetura) (Java)
+Utilizando: Angular e AngularMaterial
+
+[Reposit√≥rio back-end](https://github.com/luacks/up-arquitetura) (Java)
 
 ## Exemplos
 
- - [Imagens da aplicaÁ„o](https://github.com/luacks/frontArquiteturaUp/tree/master/screenshots)
- - [Demo](https://jandrey.me/) (… necess·rio back-end rodando localmente)
+ - [Imagens da aplica√ß√£o](https://github.com/luacks/frontArquiteturaUp/tree/master/screenshots)
+ - [Demo](https://jandrey.me/) (√â necess√°rio back-end rodando localmente)
 
 
