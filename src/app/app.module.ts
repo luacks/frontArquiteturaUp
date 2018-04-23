@@ -6,6 +6,7 @@ import { LandingModule } from './landing/landing.module'
 import { HomeModule } from './home/home.module'
 import { AppComponent } from './app.component';
 import { ProfileModule } from './profile/profile.module';
+import { SettingsModule } from './settings/settings.module';
 
 const appRoutes: ModuleWithProviders = RouterModule.forRoot([])
 
@@ -18,6 +19,7 @@ const appRoutes: ModuleWithProviders = RouterModule.forRoot([])
     BrowserAnimationsModule,
     HomeModule,
     ProfileModule,
+    SettingsModule,
     appRoutes,
     LandingModule,   
   ],

@@ -1,0 +1,10 @@
+<div>
+  
+  <mat-list>
+    <mat-list-item>
+      <img mat-list-icon src="http://www.kodefork.com/static/users/images/user.png" alt="">
+      <h4 mat-line [routerLink]="['../../profile/' + user.username]">{{ user.realname }}</h4>
+      <p mat-line>{{ user.username }}
+      </mat-list-item>  
+    </mat-list>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { UserService } from '../../shared/services/user.service'
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
   			  private userService: UserService,
-  			  private router: Router) { }
+					private router: Router,
+							private snack: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -30,11 +32,14 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     if(this.form.valid){
-    	console.log(this.form.value)
     	this.userService.save(this.form.value)
     			.then(data => {
-    				this.form.reset()
-    				this.success = true
+						if(data.id){
+							this.form.reset()
+							this.success = true
+						}else{
+							this.snack.open('Não foi possivel registrar', 'OK', { duration : 2000 })
+						}
     			})
     			.catch(err => {
     				this.error = true

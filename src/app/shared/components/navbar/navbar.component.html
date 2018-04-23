@@ -14,7 +14,7 @@
 		</ul>
 		<mat-menu #appMenu="matMenu">
 	 		 
-	 		 <button mat-menu-item [routerLink]="['../profile/' + user?.id ]">
+	 		 <button mat-menu-item [routerLink]="['../profile/' + user?.username ]">
 
    		 <mat-icon>account_circle</mat-icon>
 				Perfil</button>
@@ -25,7 +25,7 @@
 					Home</button>
 				
 
-	  		<button mat-menu-item [routerLink]="['settings']">
+	  		<button mat-menu-item [routerLink]="['../settings']">
 
     <mat-icon>settings</mat-icon>
 	  		Configurações</button>

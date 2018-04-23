@@ -6,18 +6,32 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  api: String = 'http://node8586-restup.br1.saphir.global/rest'
+  api: String = 'http://localhost:8080/redooAlpha/rest'
   // http://localhost:8080/redooAlpha/rest
+
+  //http://node8586-restup.br1.saphir.global/rest
   
   extractData(res: any){
-    return res
+    try{
+      let json = JSON.parse(res._body)
+      return json
+    }catch(err){
+      return { error: "wtf" }
+    }
   }
-
+  
   save(data){
-  	return this.http.put(this.api + '/usuario', data)
+  	return this.http.post(this.api + '/usuario', data)
   			.toPromise()
   			.then(this.extractData)
             .catch(this.extractData)
+  }
+
+  find(data){
+    return this.http.get(`${this.api}/usuario/name/${data}`)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.extractData)
   }
 
   login(data){
@@ -25,6 +39,20 @@ export class UserService {
 		.toPromise()    
   		.then(this.extractData)
         .catch(this.extractData)
+  }
+
+  delete(data){
+    return this.http.delete(`${this.api}/usuario`, data)
+		.toPromise()
+  		.then(this.extractData)
+      .catch(this.extractData)
+  }
+
+  update(data){
+    return this.http.put(`${this.api}/usuario`, data)
+		.toPromise()
+  		.then(this.extractData)
+      .catch(this.extractData)
   }
 
   follow(id: Number, data: any){

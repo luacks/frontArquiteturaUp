@@ -16,7 +16,9 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router,
               private activated: ActivatedRoute) { 
     if(this.router.url !== '/profile') this.profile = false
-  	else this.backState = true;
+    else this.backState = true;
+    
+    this.user = JSON.parse(localStorage.getItem('user'))
   }
 
   logout(){
@@ -34,7 +36,6 @@ export class NavbarComponent implements OnInit {
       break;
       default:
         this.logged = true;
-        this.user = JSON.parse(localStorage.getItem('user'))
       break;
     }
   }

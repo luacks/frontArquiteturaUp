@@ -4,12 +4,17 @@ import { Http } from '@angular/http';
 @Injectable()
 export class PostService {
 
-  api: String = 'http://node8586-restup.br1.saphir.global/rest'
+  api: String = 'http://localhost:8080/redooAlpha/rest'
 
   constructor(private http: Http) { }
 
 	extractData(res: any){
-    return res
+    try{
+      let json = JSON.parse(res._body)
+      return json
+    }catch(err){
+      return { error: "wtf" }
+    }
   }
 
   save(data, id){

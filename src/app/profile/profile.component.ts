@@ -19,11 +19,12 @@ export class ProfileComponent implements OnInit {
   
   user: any;
   loadState = false;
-
+  subpage: string = 'posts'
 
   profile: any = {
     id : null,
     followers : null,
+    following : null,
     tweets : null
   }
 
@@ -32,10 +33,10 @@ export class ProfileComponent implements OnInit {
               private userService: UserService,
               private snack: MatSnackBar) {
 
-    this.profile.id = this.activated.snapshot.paramMap.get('id')
+    this.profile.username = this.activated.snapshot.paramMap.get('id')
     this.user = JSON.parse(localStorage.getItem('user'))
-
-    this.loadApi(this.profile.id)
+               
+    this.loadApi(this.profile.username)
                 .then(data => {
                   if(this.isFollowed()) {
                     this.btnState.follow = false
@@ -49,6 +50,9 @@ export class ProfileComponent implements OnInit {
                 })
   }
 
+  changePage(page){
+    this.subpage = page
+  }
 
   follow(){
     try{
@@ -75,12 +79,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  async loadApi(id: Number){
+  async loadApi(username: String){
     try{
-      this.profile.tweets = await this.postService.get(id);
-      this.profile.followers = await this.userService.followers(id);
-      this.profile.tweets = JSON.parse(this.profile.tweets._body) // load tweets
-      this.profile.followers = JSON.parse(this.profile.followers._body) // load tweets
+      this.profile = await this.userService.find(username)
+      this.profile.followers = await this.userService.followers(this.profile.id); // load followers
+      this.profile.following = await this.userService.following(this.profile.id)
+      this.profile.tweets = await this.postService.get(this.profile.id); // load tweets 
+      console.log(this.profile)
       this.loadState = true
     }catch(e){
       console.log(e)
@@ -89,7 +94,6 @@ export class ProfileComponent implements OnInit {
 
   isFollowed(){
     let find = this.profile.followers.filter(current => current.id === this.user.id)
-    console.log(this.profile.followers)
     if(find.length === 1) return true
               else if(find.length === 0) return false
               else return false

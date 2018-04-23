@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
       let tweetData = {text : this.form.value.tweet, likes : 0, realname : this.user.realname, data : "10/10/10" }
   		this.postService.save(tweetData, this.user.id).then(res => {
 
-        this.tweetEmitter.emit(JSON.parse(res._body))
+        this.tweetEmitter.emit(res)
         this.size = 140;
         this.snackbar.open('Tweet enviado', 'OK', {
           duration: 3000

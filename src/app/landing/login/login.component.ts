@@ -27,13 +27,14 @@ export class LoginComponent implements OnInit {
   		if(this.form.valid){
   				this.uS.login(this.form.value)
   						.then(result => {
-  							if(result.status === 200){
-  								localStorage.setItem('user', result._body)
+  							if(result.id > 0){
+									result.password = 'hidden'
+  								localStorage.setItem('user', JSON.stringify(result))
   								this.router.navigate(['home'])
   							}else{
   								this.form.reset()
   								this.error = true
-  								this.errorMessage = result._body	
+  								this.errorMessage = result
   							}
   						})
 							.catch(error => { 

@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
-import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatSnackBarModule } from '@angular/material';
 
 import { UserService } from '../shared/services/user.service'
 import { HttpModule } from '@angular/http'
@@ -29,6 +29,7 @@ const routes: ModuleWithProviders = RouterModule.forChild([
     FormsModule,
     HttpModule,
     MatButtonModule,
+    MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
